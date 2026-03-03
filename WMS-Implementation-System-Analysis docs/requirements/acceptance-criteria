@@ -1,0 +1,45 @@
+Acceptance Criteria
+AC-01 – Movement Creation
+Given a movement request is created in ERP
+When the request is transmitted to WMS
+Then the movement task shall appear in WMS with status "Created"
+
+AC-02 – Stock Availability Validation
+Given a movement task is assigned
+When the operator attempts to confirm movement
+Then the system shall validate available stock quantity
+And prevent confirmation if quantity is insufficient
+
+AC-03 – Barcode Verification
+Given a warehouse operator scans a product barcode
+When the barcode does not match the movement task
+Then the system shall display an error message
+And block further execution
+
+AC-04 – Location Validation
+Given a warehouse operator scans a destination location
+When the location does not match the assigned zone
+Then the system shall notify the operator
+And prevent incorrect movement
+
+AC-05 – Stock Update
+Given a movement is confirmed
+When the confirmation is processed
+Then stock balances shall be updated in WMS
+And synchronized with ERP
+
+AC-06 – Logging
+Given a movement confirmation occurs
+When the operation is completed
+Then the system shall log user ID, timestamp, product, quantity, source and destination
+
+AC-07 – Overdue Alert
+Given a movement task exceeds planned execution time
+When monitoring is performed
+Then the system shall generate an alert for warehouse manager
+
+AC-08 – Role-Based Access
+
+Given a user logs into the system
+When accessing system functions
+Then access shall be limited according to assigned role
