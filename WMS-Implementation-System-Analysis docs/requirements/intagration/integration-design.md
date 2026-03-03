@@ -81,3 +81,90 @@ TSD → WMS
 -Все интеграционные ошибки фиксируются в журнале.
 -При расхождении остатков формируется инцидент.
 -Время синхронизации не должно превышать 5 секунд.
+
+
+
+
+WMS Integration Architecture
+1. Integration Layer Purpose
+
+-The integration layer ensures synchronous data exchange between ERP, WMS, mobile devices (TSD), and the BI system within the warehouse movement process.
+-The integration is designed to ensure:
+-Real-time stock accuracy
+-Elimination of data duplication
+-Full traceability of operations
+-Control over synchronization errors
+
+2. Systems Involved
+ERP (1C:ERP)
+Purpose: Creation of movement requests and accounting records.
+
+WMS
+Purpose: Management of warehouse operations, location-based storage, and task execution.
+
+TSD (Handheld Devices)
+Purpose: Mobile confirmation of stock movements and barcode scanning.
+
+BI System (Power BI)
+Purpose: Analytics, KPI monitoring, and reporting.
+
+3. Interaction Architecture
+ERP → WMS
+Integration type: REST API
+Purpose: Transfer movement request data.
+
+WMS → ERP
+Integration type: REST API
+Purpose: Confirm movement execution and update stock balances.
+
+WMS → BI
+Integration type: ETL / Database replication
+Purpose: Reporting and KPI calculation.
+
+TSD → WMS
+Integration type: Internal API
+Purpose: Confirm execution of warehouse tasks.
+
+4. Movement Data Flow Scenario
+
+-A movement request is created in ERP.
+-ERP sends the request to WMS.
+-WMS generates an operational task.
+-The warehouse operator executes the movement and confirms it via TSD.
+-WMS updates stock balances.
+-WMS sends confirmation back to ERP.
+-Data is transferred to BI for KPI calculation.
+
+5. Data Structure
+
+Within the ERP → WMS integration, a “Movement Request” object is transferred.
+This object contains the business data required to create an operational task in WMS.
+
+5.1 Request Attributes
+Field	Type	Description	Required
+request_id	string	Unique movement request identifier	Yes
+product_id	integer	Product identifier	Yes
+from_location	string	Source storage location	Yes
+to_location	string	Destination storage location	Yes
+quantity	decimal	Quantity to move	Yes
+created_at	datetime	Request creation timestamp	Yes
+
+5.2 Example Request Payload
+{
+  "request_id": "MR-10234",
+  "product_id": 123,
+  "from_location": "A-01-01",
+  "to_location": "B-02-03",
+  "quantity": 50,
+  "created_at": "2026-03-03T10:15:00"
+}
+
+The request structure demonstrates the format and composition of data exchanged between systems.
+It serves as the basis for defining the API contract and ensuring correct data synchronization.
+
+6. Error Handling and Data Integrity
+-Duplicate requests are prevented using a unique request_id.
+-Transmission failures trigger automatic retry mechanisms.
+-All integration errors are logged.
+-Stock discrepancies generate incident records.
+-Synchronization latency shall not exceed 5 seconds.
