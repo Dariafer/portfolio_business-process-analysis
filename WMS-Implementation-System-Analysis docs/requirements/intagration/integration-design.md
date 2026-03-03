@@ -141,13 +141,16 @@ Within the ERP → WMS integration, a “Movement Request” object is transferr
 This object contains the business data required to create an operational task in WMS.
 
 5.1 Request Attributes
-Field	Type	Description	Required
-request_id	string	Unique movement request identifier	Yes
-product_id	integer	Product identifier	Yes
-from_location	string	Source storage location	Yes
-to_location	string	Destination storage location	Yes
-quantity	decimal	Quantity to move	Yes
-created_at	datetime	Request creation timestamp	Yes
+WMS Integration Architecture
+1. Integration Layer Purpose
+| Field         | Type     | Description                        | Required |
+| ------------- | -------- | ---------------------------------- | -------- |
+| request_id    | string   | Unique movement request identifier | Yes      |
+| product_id    | integer  | Product identifier                 | Yes      |
+| from_location | string   | Source storage location            | Yes      |
+| to_location   | string   | Destination storage location       | Yes      |
+| quantity      | decimal  | Quantity to move                   | Yes      |
+| created_at    | datetime | Request creation timestamp         | Yes      |
 
 5.2 Example Request Payload
 {
