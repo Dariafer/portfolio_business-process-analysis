@@ -143,6 +143,7 @@ This object contains the business data required to create an operational task in
 5.1 Request Attributes
 WMS Integration Architecture
 1. Integration Layer Purpose
+
 | Field         | Type     | Description                        | Required |
 | ------------- | -------- | ---------------------------------- | -------- |
 | request_id    | string   | Unique movement request identifier | Yes      |
