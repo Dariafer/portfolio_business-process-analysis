@@ -1,0 +1,111 @@
+Внедрение WMS для процесса перемещения металлопроката
+1. О проекте
+Проект посвящён анализу и проектированию внедрения системы WMS для оптимизации бизнес-процесса «Перемещение металлопроката на складе».
+Цель проекта — повышение точности складского учёта, сокращение времени выполнения операций и обеспечение синхронного обмена данными между ERP и WMS.
+
+2. Проблематика (AS IS)
+Частично ручное подтверждение операций
+Задержка синхронизации данных
+Отсутствие контроля план-факт
+Ограниченная прослеживаемость
+Риски дублирования заявок
+
+3. Целевое состояние (TO BE)
+Обязательное сканирование через ТСД
+Онлайн-валидация данных
+Синхронизация в реальном времени
+Полный журнал операций
+KPI и SLA контроль
+
+4. Архитектура решения
+Система включает:
+ERP (1С:ERP)
+WMS
+Мобильные ТСД
+BI (Power BI)
+Реализована REST API интеграция и механизм логирования событий.
+
+5. Артефакты проекта
+Process Models (AS IS / TO BE / Gap Analysis)
+Data Model (Logical ERD + Physical Schema)
+Integration Design
+Migration Plan
+KPI Framework
+RACI Matrix
+Monitoring & SLA
+SQL Schema
+
+6. Бизнес-эффект
+
+Снижение количества ошибок перемещения
+Повышение точности остатков до ≥ 99%
+Сокращение времени выполнения операций
+Повышение прозрачности складских процессов
+
+7. Навыки, продемонстрированные в проекте
+Системный анализ
+Проектирование интеграций
+Моделирование бизнес-процессов
+Проектирование БД
+Формирование KPI
+Управление внедрением
+Анализ рисков
+
+English Version
+📦 WMS Implementation for Stock Movement Process
+1. Project Overview
+This project focuses on system analysis and design of a WMS implementation for optimizing the warehouse stock movement process.
+The goal is to improve inventory accuracy, reduce execution time, and ensure real-time synchronization between ERP and WMS.
+
+2. Current State (AS IS)
+
+Partial manual confirmations
+Delayed data synchronization
+No plan-vs-fact control
+Limited traceability
+Risk of duplicate processing
+
+3. Target State (TO BE)
+
+Mandatory barcode scanning via TSD
+Real-time validation
+Immediate ERP–WMS synchronization
+Full audit logging
+KPI and SLA monitoring
+
+4. Solution Architecture
+
+The solution includes:
+ERP (1C:ERP)
+WMS
+Mobile TSD devices
+BI (Power BI)
+REST API integration and event logging are implemented.
+
+5. Project Artifacts
+
+Process Models
+Data Model
+Integration Design
+Migration Plan
+KPI Framework
+RACI Matrix
+Monitoring & SLA
+SQL Schema
+
+6. Business Impact
+
+Reduced movement errors
+≥ 99% inventory accuracy
+Faster execution time
+Improved operational transparency
+
+7. Skills Demonstrated
+
+System analysis
+Integration architecture
+Business process modeling
+Database design
+KPI definition
+Implementation planning
+Risk management
